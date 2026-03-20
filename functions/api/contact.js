@@ -2,44 +2,99 @@ export async function onRequestPost(context) {
   try {
     const formData = await context.request.formData();
 
-    const firstName = formData.get('first_name');
-    const email = formData.get('email');
-    const message = formData.get('message');
+    const firstName = formData.get("first_name") || "";
+    const lastName = formData.get("last_name") || "";
+    const email = formData.get("email") || "";
+    const phone = formData.get("phone") || "";
+    const business = formData.get("business") || "";
+    const interest = formData.get("interest") || "";
+    const message = formData.get("message") || "";
 
     if (!firstName || !email) {
-      return new Response(JSON.stringify({ error: 'Missing fields' }), { status: 400 });
+      return new Response(JSON.stringify({
+        ok: false,
+        error: "Missing required fields"
+      }), {
+        status: 400,
+        headers: { "Content-Type": "application/json" }
+      });
     }
 
-    const res = await fetch("https://api.mailchannels.net/tx/v1/send", {
+    const mailBody = `
+New Contact Form Submission
+
+Name: ${firstName} ${lastName}
+Email: ${email}
+Phone: ${phone}
+Business: ${business}
+Interest: ${interest}
+
+Message:
+${message}
+`;
+
+    const mailRes = await fetch("https://api.mailchannels.net/tx/v1/send", {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
         personalizations: [
-          { to: [{ email: "ssslspaceage@gmail.com", name: "Sukriti" }] }
+          {
+            to: [
+              {
+                email: "ssslspaceage@gmail.com",
+                name: "Sukriti"
+              }
+            ]
+          }
         ],
         from: {
           email: "noreply@mailchannels.net",
-          name: "Portfolio Contact"
+          name: "Portfolio Website"
         },
-        subject: `New Contact from ${firstName}`,
+        reply_to: {
+          email: email,
+          name: `${firstName} ${lastName}`
+        },
+        subject: `New Contact from ${firstName} ${lastName}`,
         content: [
           {
             type: "text/plain",
-            value: `Message: ${message}\nEmail: ${email}`
+            value: mailBody
           }
         ]
       })
     });
 
-    const text = await res.text();
+    const responseText = await mailRes.text();
 
-    if (res.status !== 202) {
-      return new Response(JSON.stringify({ error: text }), { status: 500 });
+    if (mailRes.status !== 202) {
+      return new Response(JSON.stringify({
+        ok: false,
+        error: "Mail sending failed",
+        details: responseText
+      }), {
+        status: 500,
+        headers: { "Content-Type": "application/json" }
+      });
     }
 
-    return new Response(JSON.stringify({ ok: true }), { status: 200 });
+    return new Response(JSON.stringify({
+      ok: true,
+      message: "Mail sent successfully"
+    }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" }
+    });
 
   } catch (err) {
-    return new Response(JSON.stringify({ error: err.message }), { status: 500 });
+    return new Response(JSON.stringify({
+      ok: false,
+      error: err.message
+    }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" }
+    });
   }
 }
