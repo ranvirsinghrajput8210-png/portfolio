@@ -43,12 +43,16 @@ export async function onRequestPost(context) {
                 email: 'ssslspaceage@gmail.com', 
                 name: 'Sukriti Khosla' 
               }
-            ] 
+            ],
+            dkim_domain: 'portfolio-3y0.pages.dev',
+            dkim_selector: 'mailchannels',
+            dkim_private_key: context.env.DKIM_PRIVATE_KEY || ''
           }
         ],
         from: { 
+          // CRITICAL: Must use your .pages.dev domain
           email: 'noreply@portfolio-3y0.pages.dev', 
-          name: 'Sukriti Website Contact Form' 
+          name: 'Sukriti Website' 
         },
         reply_to: { 
           email: email, 
@@ -64,20 +68,22 @@ export async function onRequestPost(context) {
       }),
     });
 
-    // Check if email sent successfully
-    if (!mailRes.ok && mailRes.status !== 202) {
-      const err = await mailRes.text();
-      console.error('MailChannels error:', err);
-      return new Response(JSON.stringify({ error: 'Failed to send email.' }), {
-        status: 500,
+    // Check if email sent successfully (202 = Accepted)
+    if (mailRes.status === 202 || mailRes.ok) {
+      return new Response(JSON.stringify({ ok: true }), {
+        status: 200,
         headers: { 'Content-Type': 'application/json' },
       });
     }
 
-    return new Response(JSON.stringify({ ok: true }), {
-      status: 200,
+    const errorText = await mailRes.text();
+    console.error('MailChannels error:', errorText);
+    
+    return new Response(JSON.stringify({ error: 'Failed to send email.' }), {
+      status: 500,
       headers: { 'Content-Type': 'application/json' },
     });
+
   } catch (err) {
     console.error('Contact function error:', err);
     return new Response(JSON.stringify({ error: 'Server error.' }), {
