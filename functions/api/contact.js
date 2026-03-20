@@ -33,7 +33,7 @@ Message:
 ${message}
 `;
 
-    const mailRes = await fetch("https://api.mailchannels.net/tx/v1/send", {
+    const mailResponse = await fetch("https://api.mailchannels.net/tx/v1/send", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -44,20 +44,20 @@ ${message}
             to: [
               {
                 email: "ssslspaceage@gmail.com",
-                name: "Sukriti"
+                name: "Sukriti Khosla"
               }
             ]
           }
         ],
         from: {
           email: "noreply@mailchannels.net",
-          name: "Portfolio Website"
+          name: "Portfolio Contact Form"
         },
         reply_to: {
           email: email,
           name: `${firstName} ${lastName}`
         },
-        subject: `New Contact from ${firstName} ${lastName}`,
+        subject: `New Contact: ${firstName} ${lastName}`,
         content: [
           {
             type: "text/plain",
@@ -67,9 +67,11 @@ ${message}
       })
     });
 
-    const responseText = await mailRes.text();
+    const responseText = await mailResponse.text();
 
-    if (mailRes.status !== 202) {
+    if (mailResponse.status !== 202) {
+      console.log("MAILCHANNEL ERROR:", responseText);
+
       return new Response(JSON.stringify({
         ok: false,
         error: "Mail sending failed",
@@ -89,6 +91,8 @@ ${message}
     });
 
   } catch (err) {
+    console.log("FUNCTION ERROR:", err);
+
     return new Response(JSON.stringify({
       ok: false,
       error: err.message
