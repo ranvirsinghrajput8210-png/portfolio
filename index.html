@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sukriti Khosla | Marketing Leader & Strategist</title>
+    <meta name="description" content="Helping Marketing Professionals Grow Their Careers & Helping Brands Grow Through Digital Events">
+    
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #171717;
+            background-color: #ffffff;
+        }
+
+        /* Color Variables */
+        :root {
+            --olive: #556B2F;
+            --olive-700: #475928;
+            --gold-400: #F5C563;
+            --gold-500: #F5B547;
+            --gold-600: #E79C13;
+            --gold-700: #D4860C;
+            --gold-800: #B8700A;
+            --charcoal: #1f1f1f;
+            --charcoal-500: #666666;
+            --charcoal-700: #404040;
+            --cream: #fafaf5;
+            --charcoal-200: #e6e6e6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            background-color: transparent;
+            transition: background-color 0.3s;
+        }
+
+        nav.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav.scrolled .logo {
+            color: var(--charcoal);
+        }
+
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        .nav-link {
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        nav.scrolled .nav-link {
+            color: var(--charcoal-500);
+        }
+
+        nav.scrolled .nav-link:hover {
+            color: var(--charcoal);
+        }
+
+        .cta-button {
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: 500;
+            background-color: var(--gold-500);
+            color: var(--charcoal);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--gold-400);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(31, 31, 31, 0.6);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 128px 24px;
+            width: 100%;
+        }
+
+        .hero-inner {
+            max-width: 768px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-label {
+            color: var(--gold-400);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+            line-height: 1.2;
+            margin-bottom: 32px;
+        }
+
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 60px;
+            }
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            max-width: 672px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-description {
+                font-size: 20px;
+            }
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 64px;
+        }
+
+        @media (min-width: 640px) {
+            .hero-buttons {
+                flex-direction: row;
+            }
+        }
+
+        .primary-button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px 32px;
+            background-color: var(--gold-500);
+            color: var(--charcoal);
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            border-radius: 4px;
+        }
+
+        .primary-button:hover {
+            background-color: var(--gold-400);
+        }
+
+        .secondary-button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px 32px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            border-radius: 4px;
+        }
+
+        .secondary-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 32px;
+        }
+
+        @media (min-width: 1024px) {
+            .hero-stats {
+                gap: 64px;
+            }
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--gold-400);
+        }
+
+        @media (min-width: 1024px) {
+            .stat-number {
+                font-size: 48px;
+            }
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 96px 0;
+        }
+
+        @media (min-width: 1024px) {
+            section {
+                padding: 128px 0;
+            }
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 32px;
+            }
+        }
+
+        .section-label {
+            color: var(--olive);
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--charcoal);
+            margin-bottom: 24px;
+        }
+
+        @media (min-width: 1024px) {
+            .section-title {
+                font-size: 48px;
+            }
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: var(--charcoal-500);
+        }
+
+        /* Who I Help Section */
+        .who-i-help {
+            background-color: white;
+        }
+
+        .who-i-help-header {
+            max-width: 768px;
+            margin-bottom: 64px;
+        }
+
+        .who-i-help-grid {
+            display: grid;
+            gap: 32px;
+        }
+
+        @media (min-width: 768px) {
+            .who-i-help-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 48px;
+            }
+        }
+
+        .help-card h3 {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+        }
+
+        @media (min-width: 1024px) {
+            .help-card h3 {
+                font-size: 30px;
+            }
+        }
+
+        .help-card p {
+            color: var(--charcoal-500);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .help-card a {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .help-card:first-child a {
+            color: var(--olive);
+        }
+
+        .help-card:first-child a:hover {
+            color: var(--olive-700);
+        }
+
+        .help-card:last-child a {
+            color: var(--gold-700);
+        }
+
+        .help-card:last-child a:hover {
+            color: var(--gold-800);
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--cream);
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .services-grid {
+            display: grid;
+            gap: 32px;
+        }
+
+        @media (min-width: 640px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .service-card {
+            padding: 32px;
+            background-color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .service-card:hover {
+            border-color: var(--olive);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            margin-bottom: 24px;
+        }
+
+        .service-card:nth-child(1) .service-icon,
+        .service-card:nth-child(3) .service-icon {
+            color: var(--olive);
+        }
+
+        .service-card:nth-child(2) .service-icon,
+        .service-card:nth-child(4) .service-icon {
+            color: var(--gold-600);
+        }
+
+        .service-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+        }
+
+        .service-card p {
+            color: var(--charcoal-500);
+            font-size: 14px;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background-color: var(--cream);
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .pricing-header .section-description {
+            max-width: 672px;
+            margin: 0 auto;
+        }
+
+        .pricing-grid {
+            display: grid;
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+
+        @media (min-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .pricing-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .pricing-card {
+            position: relative;
+            padding: 32px;
+            background-color: white;
+            border: 1px solid var(--charcoal-200);
+            border-radius: 4px;
+        }
+
+        .pricing-card.featured {
+            background-color: var(--olive);
+            color: white;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--gold-400);
+            color: var(--charcoal);
+            font-size: 12px;
+            font-weight: 500;
+            padding: 4px 12px;
+            border-radius: 0 4px 0 0;
+        }
+
+        .pricing-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .plan-description {
+            font-size: 14px;
+            margin-bottom: 16px;
+            opacity: 0.8;
+        }
+
+        .pricing-card .price {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 24px;
+        }
+
+        .pricing-card.featured .price {
+            color: #F5C563;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .pricing-card li {
+            display: flex;
+            align-items: flex-start;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .pricing-card li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--olive);
+            margin-right: 12px;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
+        .pricing-card.featured li::before {
+            background-color: var(--gold-400);
+        }
+
+        .pricing-button {
+            width: 100%;
+            padding: 12px;
+            font-weight: 500;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .pricing-card:not(.featured) .pricing-button {
+            background-color: var(--olive);
+            color: white;
+        }
+
+        .pricing-card:not(.featured) .pricing-button:hover {
+            background-color: var(--olive-700);
+        }
+
+        .pricing-card.featured .pricing-button {
+            background-color: var(--gold-400);
+            color: var(--charcoal);
+        }
+
+        .pricing-card.featured .pricing-button:hover {
+            background-color: #F5C563;
+        }
+
+        .pricing-footer {
+            text-align: center;
+            margin-top: 64px;
+        }
+
+        .pricing-footer p {
+            color: var(--charcoal-500);
+            margin-bottom: 24px;
+        }
+
+        .pricing-footer a {
+            display: inline-flex;
+            align-items: center;
+            color: var(--olive);
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .pricing-footer a:hover {
+            color: var(--olive-700);
+        }
+
+        /* About Section */
+        .about {
+            background-color: white;
+        }
+
+        .about-grid {
+            display: grid;
+            gap: 48px;
+            align-items: center;
+        }
+
+        @media (min-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 2fr 3fr;
+                gap: 80px;
+            }
+        }
+
+        .about-image-container {
+            position: relative;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .about-accent {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 150px;
+            height: 150px;
+            background-color: var(--gold-400);
+            opacity: 0.3;
+            border-radius: 8px;
+            z-index: -1;
+        }
+
+        .about-name {
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--charcoal);
+            text-align: center;
+            font-style: italic;
+            margin-top: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        .about-content .section-title {
+            margin-bottom: 24px;
+            font-size: 32px;
+            line-height: 1.3;
+        }
+
+        @media (min-width: 1024px) {
+            .about-content .section-title {
+                font-size: 40px;
+            }
+        }
+
+        .about-text {
+            font-size: 16px;
+            color: var(--charcoal-500);
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .about-text p:first-child {
+            font-size: 18px;
+            color: var(--charcoal);
+            font-weight: 500;
+            line-height: 1.7;
+        }
+
+        .about-cta {
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid var(--charcoal-200);
+        }
+
+        .about-cta a {
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 28px;
+            background-color: var(--olive);
+            color: white;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            border-radius: 4px;
+        }
+
+        .about-cta a:hover {
+            background-color: var(--olive-700);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: #FFF9E6;
+        }
+
+        .contact-grid {
+            display: grid;
+            gap: 64px;
+        }
+
+        @media (min-width: 1024px) {
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 96px;
+            }
+        }
+
+        .contact-info .section-description {
+            margin-bottom: 40px;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background-color: var(--olive);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            border-radius: 4px;
+        }
+
+        .contact-method:last-child .contact-icon {
+            background-color: var(--gold-600);
+        }
+
+        .contact-label {
+            font-size: 14px;
+            color: var(--charcoal-500);
+        }
+
+        .contact-value {
+            color: var(--charcoal);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .contact-method:hover .contact-value {
+            color: var(--olive);
+        }
+
+        .contact-method:last-child:hover .contact-value {
+            color: var(--gold-700);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: 4px;
+        }
+
+        @media (min-width: 1024px) {
+            .contact-form {
+                padding: 40px;
+            }
+        }
+
+        .form-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        .form-row {
+            display: grid;
+            gap: 24px;
+        }
+
+        @media (min-width: 640px) {
+            .form-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--charcoal);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--charcoal-200);
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--olive);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 16px;
+            background-color: var(--olive);
+            color: white;
+            font-weight: 500;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .submit-button:hover {
+            background-color: var(--olive-700);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e1f;
+            color: white;
+            padding: 64px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr;
+            }
+        }
+
+        .footer-brand h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 448px;
+            line-height: 1.6;
+        }
+
+        .footer-section h4 {
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gold-400);
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--gold-400);
+        }
+
+        /* SVG Icons */
+        .icon {
+            width: 20px;
+            height: 20px;
+            margin-left: 8px;
+        }
+
+        .icon-sm {
+            width: 16px;
+            height: 16px;
+        }
+
+        .icon-md {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                <a href="#" class="logo">Sukriti Khosla</a>
+                <div class="nav-links">
+                    <a href="#services" class="nav-link">Services</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#pricing" class="nav-link">Pricing</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#contact" class="cta-button">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-background">
+                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1600&h=900&fit=crop" 
+                     alt="Sukriti Khosla - Marketing Consultant" 
+                     class="hero-image">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-inner">
+                    <p class="hero-label">Marketing Consultant & Career Coach</p>
+                    <h1 class="hero-title">Elevate your marketing career</h1>
+                    <p class="hero-description">Expert guidance for marketing professionals seeking career growth, personal branding, and impactful digital event strategies.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="primary-button">
+                            Work With Me
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                        <a href="#services" class="secondary-button">Explore Services</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Events Led</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">100+</span>
+                            <span class="stat-label">Careers Transformed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Who I Help Section -->
+        <section class="who-i-help">
+            <div class="container">
+                <div class="who-i-help-header">
+                    <p class="section-label">Who I Help</p>
+                    <h2 class="section-title">Tailored guidance for professionals and businesses</h2>
+                    <p class="section-description">Whether you're building your personal brand or scaling your digital events, I bring the expertise to help you succeed.</p>
+                </div>
+                <div class="who-i-help-grid">
+                    <div class="help-card">
+                        <h3>Marketing Professionals</h3>
+                        <p>Career clarity, stronger positioning, interview confidence, and branding that opens doors. I help you articulate your unique value proposition to land the roles you deserve.</p>
+                        <a href="#services">
+                            View Career Services
+                            <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="help-card">
+                        <h3>Businesses</h3>
+                        <p>High-impact digital events, webinars, and virtual summits that convert. I partner with brands to build event engines that drive engagement and revenue.</p>
+                        <a href="#services">
+                            View Event Services
+                            <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <div class="services-header">
+                    <p class="section-label">Services</p>
+                    <h2 class="section-title">What I offer</h2>
+                </div>
+                <div class="services-grid">
+                    <a href="#contact" class="service-card">
+                        <div class="service-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                            </svg>
+                        </div>
+                        <h3>Personal Branding</h3>
+                        <p>Build your professional presence</p>
+                    </a>
+                    <a href="#contact" class="service-card">
+                        <div class="service-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                            </svg>
+                        </div>
+                        <h3>Career Coaching</h3>
+                        <p>Navigate your next move</p>
+                    </a>
+                    <a href="#contact" class="service-card">
+                        <div class="service-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <h3>Event Strategy</h3>
+                        <p>Digital webinars and events that convert</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="pricing">
+            <div class="container">
+                <div class="pricing-header">
+                    <p class="section-label">Pricing</p>
+                    <h2 class="section-title">Investment in your growth</h2>
+                    <p class="section-description">Transparent pricing for high-impact results. Choose the option that fits your needs.</p>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Essential</h3>
+                        <p class="plan-description">Clarity & direction to move forward</p>
+                        <div class="price">$195</div>
+                        <ul>
+                            <li>Career clarity and direction</li>
+                            <li>Target role and positioning guidance</li>
+                            <li>Key strengths and narrative identification</li>
+                            <li>Action plan for next steps</li>
+                        </ul>
+                        <a href="#contact" class="pricing-button">Get Started</a>
+                    </div>
+                    <div class="pricing-card featured">
+                        <span class="popular-badge">⭐</span>
+                        <h3>Professional</h3>
+                        <p class="plan-description">Build a strong personal brand</p>
+                        <div class="price">$475</div>
+                        <ul>
+                            <li>Everything in Essential, plus:</li>
+                            <li>Personal branding strategy</li>
+                            <li>Positioning and messaging clarity</li>
+                            <li>Networking guidance</li>
+                            <li>1 × 30-min video session</li>
+                        </ul>
+                        <a href="#contact" class="pricing-button">Get Started</a>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Executive</h3>
+                        <p class="plan-description">Land the right role with confidence</p>
+                        <div class="price">$575</div>
+                        <ul>
+                            <li>Everything in Professional, plus:</li>
+                            <li>Interview preparation</li>
+                            <li>Salary negotiation guidance</li>
+                            <li>2 × 30-min 1:1 video sessions</li>
+                        </ul>
+                        <a href="#contact" class="pricing-button">Get Started</a>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Business</h3>
+                        <p class="plan-description">Digital Events & Webinar Strategy</p>
+                        <div class="price">$1,200</div>
+                        <ul>
+                            <li>Digital event and webinar strategy (goals, audience and format)</li>
+                            <li>Event and webinar positioning and messaging</li>
+                            <li>Topic and content angle recommendations</li>
+                            <li>Promotion strategy (channels, timelines and hooks)</li>
+                            <li>Post-event conversion strategy (leads, follow-ups and reuse)</li>
+                            <li>3 × 30-min video sessions</li>
+                        </ul>
+                        <a href="#contact" class="pricing-button">Get Started</a>
+                    </div>
+                </div>
+                <div class="pricing-footer">
+                    <p>Not sure which option is right for you?</p>
+                    <a href="#contact">
+                        Let's discuss your needs
+                        <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image-container">
+                        <div class="about-image-wrapper">
+                            <img src="img/portfolio_headshot.png" 
+                                 alt="Sukriti Khosla" 
+                                 class="about-image">
+                            <div class="about-accent"></div>
+                        </div>
+                        <p class="about-name">Sukriti Khosla</p>
+                    </div>
+                    <div class="about-content">
+                        <p class="section-label">About</p>
+                        <h2 class="section-title">A decade of global marketing leadership</h2>
+                        <div class="about-text">
+                            <p>Hi, I'm Sukriti — a global marketing leader, digital events strategist, and adjunct professor of digital marketing at Golden Gate University.</p>
+                            <p>With 10+ years across Atlassian, Google Cloud, AMA, and high-growth SaaS companies, I've built a career focused on helping brands grow and helping marketing professionals elevate their stories.</p>
+                            <p>I'm known for designing high-impact marketing programs, scaling global digital events, and creating content strategies that move business results. Over the last decade, I've led hundreds of webinars, virtual summits, and digital experiences across AI, cloud, and B2B marketing.</p>
+                            <p>I specialize in helping marketing professionals articulate their value, build authentic personal brands, and move confidently into their next roles. Because I've lived inside marketing teams for years — from content and demand gen to events, email, and audience acquisition — I know exactly what hiring managers look for.</p>
+                            <p>At the American Marketing Association Bay Area, I serve as a Board Member and lead initiatives that bring the marketing community together. Mentorship, community, and helping professionals find clarity in their careers are some of my biggest passions.</p>
+                        </div>
+                        <div class="about-cta">
+                            <a href="#contact">
+                                Work With Me
+                                <svg class="icon-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <p class="section-label">Contact</p>
+                        <h2 class="section-title">Let's work together</h2>
+                        <p class="section-description">Whether you're a marketing professional looking to elevate your career or a business building digital events — I'm here to help you succeed.</p>
+                        <div class="contact-methods">
+                            <a href="mailto:hello@sukritikhosla.com" class="contact-method">
+                                <div class="contact-icon">
+                                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="contact-label">Email</p>
+                                    <p class="contact-value">hello@sukritikhosla.com</p>
+                                </div>
+                            </a>
+                            <a href="https://linkedin.com/in/sukritikhosla" target="_blank" rel="noopener noreferrer" class="contact-method">
+                                <div class="contact-icon">
+                                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="contact-label">LinkedIn</p>
+                                    <p class="contact-value">Connect with me</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-grid">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="first_name">First Name</label>
+                                        <input type="text" id="first_name" name="first_name" placeholder="First name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="last_name">Last Name</label>
+                                        <input type="text" id="last_name" name="last_name" placeholder="Last name">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Phone</label>
+                                        <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="business">Company/Business (Optional)</label>
+                                    <input type="text" id="business" name="business" placeholder="Your company name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="interest">Service Interest</label>
+                                    <select id="interest" name="interest" required>
+                                        <option value="" disabled selected>Select a service</option>
+                                        <option value="Essential - $195">Essential - Clarity & Direction ($195)</option>
+                                        <option value="Professional - $475">Professional - Personal Branding ($475)</option>
+                                        <option value="Executive - $575">Executive - Career Coaching ($575)</option>
+                                        <option value="Business - $1200">Business - Digital Events Strategy ($1,200)</option>
+                                        <option value="Other">Other / Not sure yet</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea id="message" name="message" rows="4" placeholder="Tell me about your goals..." required></textarea>
+                                </div>
+                                <button type="submit" class="submit-button" id="submitBtn">
+                                    <span id="btnText">Send Message</span>
+                                    <svg class="icon-sm" id="btnIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                                <div id="formMessage" style="display: none; margin-top: 16px; padding: 12px; border-radius: 6px; text-align: center; font-size: 14px;"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Sukriti Khosla</h3>
+                    <p>Helping marketing professionals grow their careers and helping brands grow through digital events.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:hello@sukritikhosla.com">Email</a></li>
+                        <li><a href="https://www.linkedin.com/in/sukritikhosla/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Sukriti Khosla. All rights reserved.</p>
+                <a href="#">Back to top</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Form submission
+        const form = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnIcon = document.getElementById('btnIcon');
+        const formMessage = document.getElementById('formMessage');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Disable submit button
+            submitBtn.disabled = true;
+            btnText.textContent = 'Sending...';
+            btnIcon.style.display = 'none';
+            formMessage.style.display = 'none';
+
+            // Get form data
+            const formData = new FormData(form);
+
+            try {
+                // Submit to Cloudflare Pages Function
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.ok) {
+                    // Success
+                    formMessage.style.display = 'block';
+                    formMessage.style.backgroundColor = '#e5fbeb';
+                    formMessage.style.color = '#126427';
+                    formMessage.style.border = '1px solid #63c174';
+                    formMessage.textContent = '✓ Thank you! Your message has been sent successfully. I\'ll get back to you soon.';
+                    form.reset();
+                } else {
+                    // Error from server
+                    throw new Error(result.error || 'Failed to send message');
+                }
+            } catch (error) {
+                // Network or other error
+                formMessage.style.display = 'block';
+                formMessage.style.backgroundColor = '#ffecee';
+                formMessage.style.color = '#822025';
+                formMessage.style.border = '1px solid #ff6369';
+                formMessage.textContent = '✕ Sorry, something went wrong. Please try again or email me directly at hello@sukritikhosla.com';
+                console.error('Form submission error:', error);
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                btnText.textContent = 'Send Message';
+                btnIcon.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
