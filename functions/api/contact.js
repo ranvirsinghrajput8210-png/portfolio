@@ -44,14 +44,14 @@ export async function onRequestPost(context) {
                 name: 'Sukriti Khosla' 
               }
             ],
-            dkim_domain: 'portfolio-3y0.pages.dev',
+            dkim_domain: 'portfolios-1yu.pages.dev',
             dkim_selector: 'mailchannels',
             dkim_private_key: context.env.DKIM_PRIVATE_KEY || ''
           }
         ],
         from: { 
           // CRITICAL: Must use your .pages.dev domain
-          email: 'noreply@portfolio-3y0.pages.dev', 
+          email: 'noreply@portfolios-1yu.pages.dev', 
           name: 'Sukriti Website' 
         },
         reply_to: { 
