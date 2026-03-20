@@ -2,9 +2,9 @@ export async function onRequestPost(context) {
   try {
     const formData = await context.request.formData();
 
-    const firstName = formData.get("first_name");
-    const email = formData.get("email");
-    const message = formData.get("message");
+    const firstName = formData.get("first_name") || "";
+    const email = formData.get("email") || "";
+    const message = formData.get("message") || "";
 
     if (!firstName || !email) {
       return new Response(JSON.stringify({ ok: false, error: "Missing fields" }), {
@@ -12,35 +12,28 @@ export async function onRequestPost(context) {
       });
     }
 
-    const res = await fetch("https://api.mailchannels.net/tx/v1/send", {
+    const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers: {
+        "Authorization": `Bearer ${context.env.re_ayQrba11_EYNRKkGBT4X6wRzMsXK5VKjQ}`,
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
-        personalizations: [
-          {
-            to: [{ email: "ssslspaceage@gmail.com", name: "Sukriti" }]
-          }
-        ],
-        from: {
-          email: "sw20@om-nanotech.com",
-          name: "Portfolio Contact"
-        },
-        reply_to: {
-          email: email,
-          name: firstName
-        },
-        subject: "New Portfolio Contact",
-        content: [
-          {
-            type: "text/plain",
-            value: `Name: ${firstName}\nEmail: ${email}\nMessage: ${message}`
-          }
-        ]
+        from: "Portfolio <onboarding@resend.dev>",
+        to: ["ssslspaceage@gmail.com"],
+        subject: `New Contact from ${firstName}`,
+        html: `
+          <h2>New Contact Form</h2>
+          <p><b>Name:</b> ${firstName}</p>
+          <p><b>Email:</b> ${email}</p>
+          <p><b>Message:</b><br/>${message}</p>
+        `
       })
     });
 
-    if (res.status !== 202) {
-      const text = await res.text();
+    const text = await res.text();
+
+    if (!res.ok) {
       return new Response(JSON.stringify({ ok: false, error: text }), {
         headers: { "Content-Type": "application/json" }
       });
