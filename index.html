@@ -1277,7 +1277,13 @@
                         </div>
                     </div>
                     <div>
-                        <form class="contact-form" id="contactForm">
+                        <form class="contact-form" id="contactForm" action="https://formsubmit.co/ssslspaceage@gmail.com" method="POST">
+                            <!-- FormSubmit Configuration -->
+                            <input type="hidden" name="_subject" value="New Contact from Portfolio Website">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="text" name="_honey" style="display:none">
+                            
                             <div class="form-grid">
                                 <div class="form-row">
                                     <div class="form-group">
@@ -1374,62 +1380,6 @@
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Form submission
-        const form = document.getElementById('contactForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const btnText = document.getElementById('btnText');
-        const btnIcon = document.getElementById('btnIcon');
-        const formMessage = document.getElementById('formMessage');
-
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Disable submit button
-            submitBtn.disabled = true;
-            btnText.textContent = 'Sending...';
-            btnIcon.style.display = 'none';
-            formMessage.style.display = 'none';
-
-            // Get form data
-            const formData = new FormData(form);
-
-            try {
-                // Submit to Cloudflare Pages Function
-                const response = await fetch('/api/contact', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                const result = await response.json();
-
-                if (response.ok && result.ok) {
-                    // Success
-                    formMessage.style.display = 'block';
-                    formMessage.style.backgroundColor = '#e5fbeb';
-                    formMessage.style.color = '#126427';
-                    formMessage.style.border = '1px solid #63c174';
-                    formMessage.textContent = '✓ Thank you! Your message has been sent successfully. I\'ll get back to you soon.';
-                    form.reset();
-                } else {
-                    // Error from server
-                    throw new Error(result.error || 'Failed to send message');
-                }
-            } catch (error) {
-                // Network or other error
-                formMessage.style.display = 'block';
-                formMessage.style.backgroundColor = '#ffecee';
-                formMessage.style.color = '#822025';
-                formMessage.style.border = '1px solid #ff6369';
-                formMessage.textContent = '✕ Sorry, something went wrong. Please try again or email me directly at hello@sukritikhosla.com';
-                console.error('Form submission error:', error);
-            } finally {
-                // Re-enable submit button
-                submitBtn.disabled = false;
-                btnText.textContent = 'Send Message';
-                btnIcon.style.display = 'block';
             }
         });
     </script>
