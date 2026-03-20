@@ -47,7 +47,7 @@ export async function onRequestPost(context) {
           }
         ],
         from: { 
-          email: 'noreply@sukritikhosla.com', 
+          email: 'noreply@portfolios-1yu.pages.dev', 
           name: 'Sukriti Website Contact Form' 
         },
         reply_to: { 
