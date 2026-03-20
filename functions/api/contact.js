@@ -42,7 +42,7 @@ export async function onRequestPost(context) {
           }
         ],
         from: { 
-          email: 'noreply@43d30a33.portfolio-3y0.pages.dev', 
+          email: 'noreply@portfolio-3y0.pages.dev', 
           name: 'Sukriti Website' 
         },
         reply_to: { 
