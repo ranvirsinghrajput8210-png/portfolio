@@ -1366,72 +1366,67 @@
     </footer>
 
     <script>
-        // Navigation scroll effect
-        const navbar = document.getElementById('navbar');
-        
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+const navbar = document.getElementById('navbar');
+
+window.addEventListener('scroll', function () {
+    if (window.scrollY > 50) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+});
+
+const form = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
+const btnText = document.getElementById('btnText');
+const btnIcon = document.getElementById('btnIcon');
+const formMessage = document.getElementById('formMessage');
+
+form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    submitBtn.disabled = true;
+    btnText.textContent = 'Sending...';
+    btnIcon.style.display = 'none';
+    formMessage.style.display = 'none';
+
+    const formData = new FormData(form);
+
+    try {
+        const response = await fetch('/api/contact', {
+            method: 'POST',
+            body: formData
         });
 
-        // Form submission
-        const form = document.getElementById('contactForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const btnText = document.getElementById('btnText');
-        const btnIcon = document.getElementById('btnIcon');
-        const formMessage = document.getElementById('formMessage');
+        let result = {};
 
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Disable submit button
-            submitBtn.disabled = true;
-            btnText.textContent = 'Sending...';
-            btnIcon.style.display = 'none';
-            formMessage.style.display = 'none';
+        try {
+            result = await response.json();
+        } catch {
+            result = { ok: false, error: "Invalid server response" };
+        }
 
-            // Get form data
-            const formData = new FormData(form);
+        if (response.ok && result.ok) {
+            formMessage.style.display = 'block';
+            formMessage.style.backgroundColor = '#e5fbeb';
+            formMessage.style.color = '#126427';
+            formMessage.style.border = '1px solid #63c174';
+            formMessage.textContent = '✓ Message sent successfully!';
+            form.reset();
+        } else {
+            throw new Error(result.error || 'Server error');
+        }
 
-            try {
-                // Submit to Cloudflare Pages Function
-                const response = await fetch('/api/contact', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                const result = await response.json();
-
-                if (response.ok && result.ok) {
-                    // Success
-                    formMessage.style.display = 'block';
-                    formMessage.style.backgroundColor = '#e5fbeb';
-                    formMessage.style.color = '#126427';
-                    formMessage.style.border = '1px solid #63c174';
-                    formMessage.textContent = '✓ Thank you! Your message has been sent successfully. I\'ll get back to you soon.';
-                    form.reset();
-                } else {
-                    // Error from server
-                    throw new Error(result.error || 'Failed to send message');
-                }
-            } catch (error) {
-                // Network or other error
-                formMessage.style.display = 'block';
-                formMessage.style.backgroundColor = '#ffecee';
-                formMessage.style.color = '#822025';
-                formMessage.style.border = '1px solid #ff6369';
-                formMessage.textContent = '✕ Sorry, something went wrong. Please try again or email me directly at hello@sukritikhosla.com';
-                console.error('Form submission error:', error);
-            } finally {
-                // Re-enable submit button
-                submitBtn.disabled = false;
-                btnText.textContent = 'Send Message';
-                btnIcon.style.display = 'block';
-            }
-        });
-    </script>
+    } catch (error) {
+        formMessage.style.display = 'block';
+        formMessage.style.backgroundColor = '#ffecee';
+        formMessage.style.color = '#822025';
+        formMessage.style.border = '1px solid #ff6369';
+        formMessage.textContent = '✕ Server error (debug: ' + error.message + ')';
+        console.error(error);
+    } finally {
+        submitBtn.disabled = false;
+        btnText.textContent = 'Send Message';
+        btnIcon.style.display = 'block';
+    }
+});
+</script>
 </body>
 </html>
