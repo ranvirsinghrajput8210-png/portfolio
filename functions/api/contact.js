@@ -9,7 +9,6 @@ export async function onRequestPost(context) {
     const interest   = formData.get('interest')    || '';
     const message    = formData.get('message')     || '';
 
-    // Validate required fields
     if (!firstName || !email) {
       return new Response(JSON.stringify({ error: 'Missing required fields.' }), {
         status: 400,
@@ -17,21 +16,17 @@ export async function onRequestPost(context) {
       });
     }
 
-    // Build email body
     const body = [
-      `New Contact Form Submission`,
-      ``,
       `Name:     ${firstName} ${lastName}`,
       `Email:    ${email}`,
       `Phone:    ${phone || '—'}`,
       `Business: ${business || '—'}`,
-      `Service Interest: ${interest || '—'}`,
+      `Interest: ${interest || '—'}`,
       ``,
       `Message:`,
       message || '—',
     ].join('\n');
 
-    // Send email via MailChannels
     const mailRes = await fetch('https://api.mailchannels.net/tx/v1/send', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -43,22 +38,18 @@ export async function onRequestPost(context) {
                 email: 'ssslspaceage@gmail.com', 
                 name: 'Sukriti Khosla' 
               }
-            ],
-            dkim_domain: 'portfolios-1yu.pages.dev',
-            dkim_selector: 'mailchannels',
-            dkim_private_key: context.env.DKIM_PRIVATE_KEY || ''
+            ] 
           }
         ],
         from: { 
-          // CRITICAL: Must use your .pages.dev domain
-          email: 'noreply@portfolios-1yu.pages.dev', 
+          email: 'noreply@43d30a33.portfolio-3y0.pages.dev', 
           name: 'Sukriti Website' 
         },
         reply_to: { 
           email: email, 
           name: `${firstName} ${lastName}` 
         },
-        subject: `New Contact: ${firstName} ${lastName}${interest ? ' — ' + interest : ''}`,
+        subject: `New Contact from ${firstName} ${lastName}${interest ? ' — ' + interest : ''}`,
         content: [
           { 
             type: 'text/plain', 
@@ -68,22 +59,19 @@ export async function onRequestPost(context) {
       }),
     });
 
-    // Check if email sent successfully (202 = Accepted)
-    if (mailRes.status === 202 || mailRes.ok) {
-      return new Response(JSON.stringify({ ok: true }), {
-        status: 200,
+    if (!mailRes.ok && mailRes.status !== 202) {
+      const err = await mailRes.text();
+      console.error('MailChannels error:', err);
+      return new Response(JSON.stringify({ error: 'Failed to send email.' }), {
+        status: 500,
         headers: { 'Content-Type': 'application/json' },
       });
     }
 
-    const errorText = await mailRes.text();
-    console.error('MailChannels error:', errorText);
-    
-    return new Response(JSON.stringify({ error: 'Failed to send email.' }), {
-      status: 500,
+    return new Response(JSON.stringify({ ok: true }), {
+      status: 200,
       headers: { 'Content-Type': 'application/json' },
     });
-
   } catch (err) {
     console.error('Contact function error:', err);
     return new Response(JSON.stringify({ error: 'Server error.' }), {

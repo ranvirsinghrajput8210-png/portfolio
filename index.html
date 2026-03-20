@@ -1277,14 +1277,7 @@
                         </div>
                     </div>
                     <div>
-                        <form class="contact-form" id="contactForm" action="https://formsubmit.co/ssslspaceage@gmail.com" method="POST">
-                            <!-- FormSubmit Configuration -->
-                            <input type="hidden" name="_subject" value="New Contact from Portfolio Website">
-                            <input type="hidden" name="_captcha" value="false">
-                            <input type="hidden" name="_template" value="table">
-                            <input type="hidden" name="_next" value="https://43d30a33.portfolio-3y0.pages.dev/#contact">
-                            <input type="text" name="_honey" style="display:none">
-                            
+                        <form class="contact-form" id="contactForm">
                             <div class="form-grid">
                                 <div class="form-row">
                                     <div class="form-group">
@@ -1384,24 +1377,59 @@
             }
         });
 
-        // Check if form was submitted (redirected back with success)
-        window.addEventListener('DOMContentLoaded', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const formMessage = document.getElementById('formMessage');
+        // Form submission
+        const form = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnIcon = document.getElementById('btnIcon');
+        const formMessage = document.getElementById('formMessage');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
             
-            // Check if we're on the contact section after submission
-            if (window.location.hash === '#contact' && document.referrer.includes('formsubmit.co')) {
+            // Disable submit button
+            submitBtn.disabled = true;
+            btnText.textContent = 'Sending...';
+            btnIcon.style.display = 'none';
+            formMessage.style.display = 'none';
+
+            // Get form data
+            const formData = new FormData(form);
+
+            try {
+                // Submit to Cloudflare Pages Function
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.ok) {
+                    // Success
+                    formMessage.style.display = 'block';
+                    formMessage.style.backgroundColor = '#e5fbeb';
+                    formMessage.style.color = '#126427';
+                    formMessage.style.border = '1px solid #63c174';
+                    formMessage.textContent = '✓ Thank you! Your message has been sent successfully. I\'ll get back to you soon.';
+                    form.reset();
+                } else {
+                    // Error from server
+                    throw new Error(result.error || 'Failed to send message');
+                }
+            } catch (error) {
+                // Network or other error
                 formMessage.style.display = 'block';
-                formMessage.style.backgroundColor = '#e5fbeb';
-                formMessage.style.color = '#126427';
-                formMessage.style.border = '1px solid #63c174';
-                formMessage.textContent = '✓ Thank you! Your message has been sent successfully. I\'ll get back to you soon.';
-                
-                // Clear the form
-                document.getElementById('contactForm').reset();
-                
-                // Scroll to the message
-                formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                formMessage.style.backgroundColor = '#ffecee';
+                formMessage.style.color = '#822025';
+                formMessage.style.border = '1px solid #ff6369';
+                formMessage.textContent = '✕ Sorry, something went wrong. Please try again or email me directly at hello@sukritikhosla.com';
+                console.error('Form submission error:', error);
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                btnText.textContent = 'Send Message';
+                btnIcon.style.display = 'block';
             }
         });
     </script>
