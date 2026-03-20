@@ -42,7 +42,7 @@ export async function onRequestPost(context) {
       },
       body: JSON.stringify({
         from: "Portfolio Contact <onboarding@resend.dev>",
-        to: ["ssslspaceage@gmail.com"],
+        to: ["ranvirsinghdev@gmail.com"],
         subject: `New Contact from ${firstName}`,
         html: htmlContent
       })
