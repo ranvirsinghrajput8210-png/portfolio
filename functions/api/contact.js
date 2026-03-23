@@ -37,12 +37,12 @@ export async function onRequestPost(context) {
     const resendResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
-        "Authorization": "Bearer re_ayQrba11_EYNRKkGBT4X6wRzMsXK5VKjQ",   // 👈 PUT YOUR RESEND KEY HERE
+        "Authorization": "Bearer re_dBnCfXFd_HQqYzZWw3bsQMBC92azqnaov",   // 👈 PUT YOUR RESEND KEY HERE
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
         from: "Portfolio Contact <onboarding@resend.dev>",
-        to: ["ranvirsinghdev@gmail.com"],
+        to: ["ssslspaceage@gmail.com"],
         subject: `New Contact from ${firstName}`,
         html: htmlContent
       })
